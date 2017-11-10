@@ -1,0 +1,21 @@
+<div *ngIf="isShow">
+  <input type="text" placeholder="English" [(ngModel)]="english" name="english">
+  <input type="text" placeholder="VietNamese" [(ngModel)]="vietnam" name="vietnam">
+  <input type="button" value="Thêm từ mới" (click)="addNewWord(); isShow=!isShow">
+</div>
+<button *ngIf="!isShow" (click)="isShow=!isShow">Thêm từ mới</button>
+<!-- (change)="changeStatus()" -->
+<br>
+<select [(ngModel)]="Status" name="Status">
+  <option *ngFor="let status of arrStatus; let i=index" value="{{i}}">{{status}}</option>
+</select>
+<div *ngFor="let item of arrWords">
+  <div class="item-word" *ngIf="Status=='0' || (Status=='1' && item.memorized) || (Status=='2' && !item.memorized)">
+    <h4 [ngStyle]="{color: item.memorized?'green':'red'}">{{item.en}}</h4>
+    <h4 [ngStyle]="{color: item.memorized?'green':'red'}">{{item.vn}}</h4>
+    <button (click)="deleteItem(item.id)">Xóa</button>
+    <button (click)="item.memorized=!item.memorized">
+      {{item.memorized ?'Đã thuộc':'Chưa thuộc'}}
+    </button>
+  </div>
+</div>

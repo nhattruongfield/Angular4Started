@@ -1,0 +1,16 @@
+<div class="container">
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <legend>Form</legend>
+    </div>
+    <input placeholder="Enter UserName" [(ngModel)]="name" name="name" #txtUserName>
+    <h4>Your name is {{name}}</h4>
+    <h4>Template reference variable: {{txtUserName.value | json }}</h4>
+    <h4 [style.color]="'red'">Style binding 1</h4>
+    <h4 [style.color]="name.length %2===0?'red':'black'">Style binding 2</h4>
+    <div [class]="name.length %2===0?'circle':'square'"></div>
+    <div [class.circle]="!isHighLight" [class.square]="isHighLight"></div>
+
+  </form>
+</div>

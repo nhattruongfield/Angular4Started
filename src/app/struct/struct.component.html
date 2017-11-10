@@ -1,0 +1,13 @@
+<p *ngIf="isShow">
+  struct works!
+</p>
+
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let item of arrayObject">
+    {{'Subject: ' +item}}
+  </li>
+</ul>
+
+
+<button (click)="isShow=!isShow">Toggle</button>
